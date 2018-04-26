@@ -1,0 +1,162 @@
+:root {
+  --darkBlue: #132238;
+  --darkDarkBlue: #0d1726;
+  --highlight: #26BFC5;
+  --mediumBlue: #2F8C9C;
+  --text: #305F7F;
+}
+
+body {
+  background-color: var(--darkDarkBlue);
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+}
+
+/* <!-- GENERL --> */
+.optionBox {
+  border: 0.01em solid var(--mediumBlue);
+  border-left: none;
+  border-top: none;
+  height: 10em;
+  background-color: var(--highlight);
+  opacity: 0.7;
+}
+
+.optionBox > p {
+  color: var(--text);
+  font-size: 2em;
+}
+
+.dashBoardBody {
+  max-height: 60vh;
+  overflow: scroll;
+  width: 33.33%;
+}
+
+.activeNav {
+  background-color: transparent !important;
+}
+
+/* <!-- CONTAINER --> */
+#container {
+  background-color: var(--darkBlue);
+  width: 100vw;
+}
+
+/* <!-- TOP BAR --> */
+#topBar {
+  height: 15em;
+  justify-content: flex-end;
+  position: relative;
+}
+
+/* <!-- USER BOX --> */
+#userBox {
+  align-items: flex-start;
+  left: 1em;
+  position: absolute;
+  top: 0;
+}
+
+#userBox > * {
+  color: var(--text);
+  margin: 0 0 0 1em;
+}
+
+#userBox > span {
+  color: var(--highlight);
+  left: 1em;
+  position: relative;
+}
+
+#userImg {
+  border-radius: 50%;
+  height: 12em;
+  width: 12em;
+}
+
+/* <!-- NAV BOX --> */
+.navBox {
+  background-color: var(--highlight);
+  border: 0.01em solid var(--mediumBlue);
+  border-bottom: none;
+  border-right: none;
+  height: 15em;
+  opacity: 0.7;
+  width: 15em;
+  z-index: 2;
+}
+
+.navBox > *:first-child {
+  color: var(--text);
+  font-size: 4em;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+.navBox > p:last-child {
+  color: var(--text);
+}
+
+/* <!-- HELP TEXT --> */
+#helpText {
+  background-color: var(--darkDarkBlue);
+  color: var(--highlight);
+  height: 4em;
+}
+
+/* <!-- DASHBOARD BODY --> */
+#dashboardBody {
+  align-items: flex-start;
+  min-height: 10em;
+}
+
+/* <!-- DASHBOARD LEFT --> */
+#dashboardLeft {
+
+}
+
+/* <!-- DASHBOARD MIDDLE --> */
+#dashboardMiddle {
+  border-left: 0.01em solid var(--mediumBlue);
+}
+
+/* <!-- DASHBOARD RIGHT --> */
+#dashboardRight {
+  height: 60vh;
+  position: relative;
+}
+
+#updateBtn {
+  background-color: var(--mediumBlue);
+  opacity: 0.7;
+  padding: 0 1em;
+  position: absolute;
+  right: 0;
+  width: 8em;
+}
+
+#dashboardRight textarea {
+  background-color: transparent;
+  border: none;
+  bottom: 0;
+  color: var(--text);
+  font-size: 2.8em;
+  font-weight: 200;
+  left: 0;
+  outline: 0;
+  padding: 0.5em;
+  position: absolute;
+}
+
+textarea::placeholder {
+  color: var(--text);
+}
+
+/* <!-- FOOTER --> */
+#footer {
+  color: var(--text);
+  padding-top: 2em;
+  text-align: center;
+}

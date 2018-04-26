@@ -1,0 +1,32 @@
+#sendBtn,
+#editPageTextLeftLeft > * > p > i,
+#updateBtn {
+  transition: all 0.5s;
+}
+
+.navBox:hover {
+  background-color: transparent;
+}
+
+#sendBtn:hover {
+  background-color: var(--highlight);
+  padding: 0.5em 2em;
+}
+
+#editPageTextLeftLeft > *:hover {
+  background-color: var(--highlight);
+  opacity: 0.6;
+}
+
+#editPageTextLeftLeft > *:hover > p > i {
+  transform: scale(1.6) rotateZ(20deg);
+}
+
+.optionBox:hover {
+  background-color: transparent;
+}
+
+#updateBtn:hover {
+  width: 100%;
+  opacity: 1;
+}

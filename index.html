@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="./css/library.css">
+    <link rel="stylesheet" href="./css/master.css">
+    <link rel="stylesheet" href="./css/animation.css">
+  </head>
+  <body ng-app='app' ng-controller='ctrl' ng-cloak>
+
+    <!-- CONTAINER -->
+    <div id="container" class="">
+
+      <!-- TOP BAR -->
+      <div id="topBar" class="fullWidth flexRow ">
+        <!-- USER BOX -->
+        <div id="userBox" class="fullHeight flexCol">
+          <!-- <p>USER:</p>
+          <span>ISAIAH HARRISON</span>
+          <p>WEBSITE:</p>
+          <span>http://letsbuildyourwebsite.com/</span> -->
+        </div>
+        <!-- NAV BOX -->
+        <div data={{$index}} class="navBox flexCol" ng-click='selectServiceOption($index)' ng-repeat='nav in navOptions track by $index'>
+          <i class={{nav.icon}}></i>
+          <p>{{nav.name}}</p>
+        </div>
+      </div>
+
+      <!-- HELP TEXT -->
+      <div id="helpText" class="fullWidth flexRow" ng-click='get()'>
+        <p>{{helpText}}</p>
+      </div>
+
+      <!-- DASHBOARD BODY -->
+      <div id="dashboardBody" class="fullWidth flexRow">
+
+        <!-- DASHBOARD LEFT -->
+        <div id="dashboardLeft" class="dashBoardBody">
+          <div class="optionBox fullWidth flexRow" ng-click='selectPage(option)' ng-repeat='option in leftDashboardOptions track by $index'>
+            <p>{{option}}</p>
+          </div>
+        </div>
+
+        <!-- DASHBOARD MIDDLE -->
+        <div id="dashboardMiddle" class="dashBoardBody">
+          <div class="optionBox fullWidth flexRow" ng-repeat='option in middleDashboardOptions track by $index'>
+            <p>{{option | shorten}}</p>
+          </div>
+        </div>
+
+        <!-- DASHBOARD RIGHT -->
+        <div id="dashboardRight" class="dashBoardBody">
+          <div id="updateBtn" class="">
+            <p>UPDATE</p>
+          </div>
+          <textarea name="name" class="h90 fullWidth" placeholder="start writting here"></textarea>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer" class="">
+      Copyright © 2018 letsbuildyourwebsite
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="./js/main.js" type="text/javascript"></script>
+  </body>
+</html>
