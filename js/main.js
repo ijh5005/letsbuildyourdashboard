@@ -3,21 +3,36 @@
 var app = angular.module('app', []);
 
 app.controller('ctrl', ['$rootScope', '$scope', '$interval', '$timeout', '$http', 'task', 'appData', function($rootScope, $scope, $interval, $timeout, $http, task, appData){
+  //database name
   $rootScope.db = 'letsbuildyourwebsitedashboard';
+  //database collection name
   $rootScope.coll = 'dashboardContent';
+  //api key
   $rootScope.apiKey = '7sJF23PwcfBVjIeJCuUDIXcWr3kJgx3d';
+  //the id of the content in the collection
   $rootScope.id = '5ae13651f36d284005fe9064';
+  //the app content will be retrieved with a get request to mlab and stored in $rootScope.appContent
   $rootScope.appContent;
+  //dashboard options on the left of page
+  $rootScope.leftDashboardOptions = [];
+  //dashboard options on the right of page
+  $rootScope.middleDashboardOptions = [];
 
   //active clicks
   $scope.selectServiceOption = (index) => {
     ($scope.currentNavOptionIndex === index) ? task.selectServiceOption(index, false) : task.selectServiceOption(index, true);
     $scope.currentNavOptionIndex = ($scope.currentNavOptionIndex === index) ? '' : index;
   }
+  $scope.selectPageToEdit = (index) => {
+    task.selectPageToEdit(index);
+  }
+  //back button
+  $scope.goBack = () => {
+    task.selectServiceOption(null, false);
+    $scope.currentNavOptionIndex = '';
+  }
 
-  //dashboard options
-  $rootScope.leftDashboardOptions = [];
-  $scope.middleDashboardOptions = [];
+
 
   $scope.helpText = 'CHOOSE FROM THE ABOVE OPTIONS';
   $scope.navOptions = appData.navOptions;
@@ -45,16 +60,23 @@ app.controller('ctrl', ['$rootScope', '$scope', '$interval', '$timeout', '$http'
 app.service('task', function($rootScope, $http){
   //service options
   this.selectServiceOption = (index, isSelected) => {
+    //remove the active class from the navigation options
     $('.navBox').removeClass('activeNav');
+    //remove the options
+    $rootScope.leftDashboardOptions = [];
     if(isSelected){
+      //show back btn
+      $('#backBtn').removeClass('hideBackBtn');
+      //add the active class to the select navigation option
       $(`.navBox[data="${index}"]`).addClass('activeNav');
-      $rootScope.leftDashboardOptions = [];
+      //show corresponding options
       switch (index) {
         case 0: this.setEditPageText(); break;
         default:
       }
     } else {
-      $rootScope.leftDashboardOptions = [];
+      //hide back btn
+      $('#backBtn').addClass('hideBackBtn');
     }
   }
   this.setEditPageText = () => {
@@ -62,6 +84,13 @@ app.service('task', function($rootScope, $http){
     for(let i = 0; i < l; i++){
       $rootScope.leftDashboardOptions.push($rootScope.appContent['pages'][`_${i}`]['name']);
     }
+  }
+  this.selectPageToEdit = (index) => {
+    $rootScope.leftDashboardOptions = [];
+    const content = $rootScope.appContent['pages'][`_${index}`]['content'];
+    content.map(data => {
+      $rootScope.leftDashboardOptions.push(data);
+    })
   }
 
   //api calls
@@ -321,7 +350,17 @@ app.service('appData', function(){
 
 app.filter('shorten', function() {
   return function(input) {
-    const output = (input.length < 20) ? input : `${input.substring(0, 20)}...`;
+    let output = '';
+    const type = typeof input;
+    if(type === 'string'){
+      output = (input.length < 20) ? input : `${input.substring(0, 20)}...`;
+    } else if(type === 'object'){
+      const objKeys = Object.keys(input);
+      objKeys.map(key => {
+        const string = (input[key].length < 10) ? input[key] : `${input[key].substring(0, 10)}...`;
+        output += string;
+      })
+    }
     return output;
   }
 });

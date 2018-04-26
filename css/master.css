@@ -104,6 +104,25 @@ body {
   background-color: var(--darkDarkBlue);
   color: var(--highlight);
   height: 4em;
+  position: relative;
+}
+
+#backBtn {
+  position: absolute;
+  left: 0;
+  width: 6em;
+  background-color: var(--highlight);
+  opacity: 0.7;
+  color: var(--mediumBlue);
+}
+
+#backBtn > * {
+  font-size: 4em;
+  font-weight: 300;
+}
+
+.hideBackBtn {
+  left: -6em !important;
 }
 
 /* <!-- DASHBOARD BODY --> */

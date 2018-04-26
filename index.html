@@ -32,6 +32,9 @@
 
       <!-- HELP TEXT -->
       <div id="helpText" class="fullWidth flexRow" ng-click='get()'>
+        <div id="backBtn" class="fullHeight flexRow hideBackBtn" ng-click='goBack()'>
+          <p><</p>
+        </div>
         <p>{{helpText}}</p>
       </div>
 
@@ -40,8 +43,8 @@
 
         <!-- DASHBOARD LEFT -->
         <div id="dashboardLeft" class="dashBoardBody">
-          <div class="optionBox fullWidth flexRow" ng-click='selectPage(option)' ng-repeat='option in leftDashboardOptions track by $index'>
-            <p>{{option}}</p>
+          <div class="optionBox fullWidth flexRow" ng-click='selectPageToEdit($index)' ng-repeat='option in leftDashboardOptions track by $index'>
+            <p>{{option | shorten}}</p>
           </div>
         </div>
 
