@@ -18,26 +18,29 @@ app.controller('ctrl', ['$rootScope', '$scope', '$interval', '$timeout', '$http'
   //dashboard options on the right of page
   $rootScope.middleDashboardOptions = [];
 
-  //active clicks
+  //  VARIABLES **********
+  //the help text on the screen
+  $scope.helpText = 'CHOOSE FROM THE ABOVE OPTIONS';
+  //store the navigation options
+  $scope.navOptions = appData.navOptions;
+  // current navigation option index chosen
+  $scope.currentNavOptionIndex;
+
+  //  METHODS **********
+  //select and nav option
   $scope.selectServiceOption = (index) => {
     ($scope.currentNavOptionIndex === index) ? task.selectServiceOption(index, false) : task.selectServiceOption(index, true);
     $scope.currentNavOptionIndex = ($scope.currentNavOptionIndex === index) ? '' : index;
   }
+  //choice page to edit content
   $scope.selectPageToEdit = (index) => {
     task.selectPageToEdit(index);
   }
-  //back button
+  //go back
   $scope.goBack = () => {
     task.selectServiceOption(null, false);
     $scope.currentNavOptionIndex = '';
   }
-
-
-
-  $scope.helpText = 'CHOOSE FROM THE ABOVE OPTIONS';
-  $scope.navOptions = appData.navOptions;
-  $scope.currentNavOptionIndex;
-
   //api calls
   $scope.get = () => {
     task.get();
@@ -52,6 +55,7 @@ app.controller('ctrl', ['$rootScope', '$scope', '$interval', '$timeout', '$http'
     task.del();
   }
 
+  //data to copy from when storing the data in mlab
   const data = JSON.stringify(task.dataStructor);
   //get application data
   task.get();
