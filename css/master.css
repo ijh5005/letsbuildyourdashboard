@@ -1,34 +1,44 @@
 :root {
   --darkBlue: #132238;
   --darkDarkBlue: #0d1726;
+  --greyText: #A5ABB4;
   --highlight: #26BFC5;
   --mediumBlue: #2F8C9C;
+  --mediumDarkBlue: #0E1A2B;
   --text: #305F7F;
 }
 
 body {
-  background-color: var(--darkDarkBlue);
+  /* background-color: var(--darkDarkBlue); */
+  background-color: #F6F6F6;
+  background-color: var(--darkBlue);
   font-family: 'Montserrat', sans-serif;
   overflow: hidden;
 }
 
 /* <!-- GENERL --> */
 .optionBox {
-  border: 0.01em solid var(--mediumBlue);
+  /* border: 0.01em solid var(--mediumBlue); */
   border-left: none;
   border-top: none;
-  height: 10em;
-  background-color: var(--highlight);
-  opacity: 0.7;
+  /* background-color: var(--highlight); */
+  color: var(--greyText);
+  height: 4em;
+  justify-content: flex-start;
+  margin: 0 auto;
+  /* opacity: 0.7; */
+  width: 10em;
 }
 
 .optionBox > p {
   color: var(--text);
-  font-size: 2em;
+  font-size: 1.6em;
+  font-weight: 300;
+  left: 0;
+  position: relative;
 }
 
 .dashBoardBody {
-  max-height: 60vh;
   overflow: scroll;
   width: 33.33%;
 }
@@ -37,15 +47,108 @@ body {
   background-color: transparent !important;
 }
 
+/* <!-- LOG IN SCREEN --> */
+#logIn {
+  background-color: var(--darkDarkBlue);
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+}
+
+#logIn > p {
+  color: #fff;
+  font-size: 8em;
+  left: 10rem;
+  margin: 0;
+  opacity: 0.6;
+  position: absolute;
+  top: 20%;
+  width: 6em;
+  z-index: 2;
+}
+
+#logInBox {
+  background-color: rgba(39, 44, 66, 0.8);
+  height: 40em;
+  width: 60em;
+  z-index: 10;
+}
+
+.logInInput {
+  background: none;
+  border: none;
+  border-bottom: 0.01em solid #fff;
+  color: #fff;
+  font-size: 2em;
+  font-weight: 100;
+  outline: 0;
+  width: 10em;
+}
+
+.logInInput::placeholder {
+  color: #fff;
+}
+
+#logInBtn {
+  background-color: var(--darkDarkBlue);
+  height: 6em;
+  margin: 1rem;
+  text-align: center;
+  width: 6em;
+}
+
+#logInBtn p {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 100;
+}
+
+/* <!-- CONFIRMATION BOX --> */
+#confirmationBoxContainer {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
+}
+
+#confirmationBox {
+  background-color: var(--mediumBlue);
+  color: #000;
+  height: 20em;
+  width: 40em;
+}
+
+#confirmationBox > * {
+  text-align: center;
+  width: 80%;
+}
+
+#confirmationBox > p {
+  color: #fff;
+  letter-spacing: 3px;
+}
+
+#confirmationBoxAnswerBox > p {
+  margin: 2em 2em;
+}
+
 /* <!-- CONTAINER --> */
 #container {
-  background-color: var(--darkBlue);
+  /* background-color: var(--darkBlue); */
   width: 100vw;
 }
 
 /* <!-- TOP BAR --> */
 #topBar {
-  height: 15em;
+  background-color: var(--darkBlue);
+  height: 8em;
   justify-content: flex-end;
   position: relative;
 }
@@ -81,15 +184,16 @@ body {
   border: 0.01em solid var(--mediumBlue);
   border-bottom: none;
   border-right: none;
-  height: 15em;
-  opacity: 0.7;
-  width: 15em;
+  height: 8em;
+  text-align: center;
+  /* opacity: 0.7; */
+  width: 8em;
   z-index: 2;
 }
 
 .navBox > *:first-child {
   color: var(--text);
-  font-size: 4em;
+  font-size: 2.8em;
   font-weight: 700;
   margin: 0;
   text-align: center;
@@ -101,55 +205,66 @@ body {
 
 /* <!-- HELP TEXT --> */
 #helpText {
+  /* -moz-box-shadow: 0px -1px 37px 2px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px -1px 37px 2px rgba(0,0,0,1); */
   background-color: var(--darkDarkBlue);
+  /* box-shadow: 0px -1px 37px 2px rgba(0,0,0,1); */
   color: var(--highlight);
   height: 4em;
   position: relative;
-}
-
-#backBtn {
-  position: absolute;
-  left: 0;
-  width: 6em;
-  background-color: var(--highlight);
-  opacity: 0.7;
-  color: var(--mediumBlue);
-}
-
-#backBtn > * {
-  font-size: 4em;
-  font-weight: 300;
-}
-
-.hideBackBtn {
-  left: -6em !important;
+  text-align: center;
+  /* z-index: 10; */
 }
 
 /* <!-- DASHBOARD BODY --> */
 #dashboardBody {
   align-items: flex-start;
+  height: 72vh;
   min-height: 10em;
 }
 
 /* <!-- DASHBOARD LEFT --> */
 #dashboardLeft {
-
+  /* background-color: var(--mediumDarkBlue); */
+  padding-top: 6em;
 }
+
+/* #dashboardLeft::-webkit-scrollbar {
+  width: 0.1em;
+}
+
+#dashboardLeft::-webkit-scrollbar-thumb {
+  background-color: grey;
+} */
 
 /* <!-- DASHBOARD MIDDLE --> */
 #dashboardMiddle {
-  border-left: 0.01em solid var(--mediumBlue);
+  overflow: scroll;
+}
+
+#editText {
+  border-bottom: 0.01em dashed var(--mediumBlue);
+  color: var(--text);
+  font-size: 1.2em;
+  left: 0;
+  margin: 1em auto;
+  position: relative;
+  text-align: center;
+  width: 22rem;
 }
 
 /* <!-- DASHBOARD RIGHT --> */
 #dashboardRight {
+  /* -moz-box-shadow: 0px 10px 57px 2px rgba(187,187,187,1);
+  -webkit-box-shadow: 0px 10px 57px 2px rgba(187,187,187,1);
+  box-shadow: 0px 10px 57px 2px rgba(187,187,187,1); */
   height: 60vh;
   position: relative;
+  /* background-color: var(--mediumDarkBlue); */
 }
 
 #updateBtn {
-  background-color: var(--mediumBlue);
-  opacity: 0.7;
+  background-color: var(--highlight);
   padding: 0 1em;
   position: absolute;
   right: 0;
@@ -161,12 +276,13 @@ body {
   border: none;
   bottom: 0;
   color: var(--text);
-  font-size: 2.8em;
-  font-weight: 200;
+  font-size: 1.6em;
+  font-weight: 300;
   left: 0;
   outline: 0;
   padding: 0.5em;
   position: absolute;
+  text-align: center;
 }
 
 textarea::placeholder {
@@ -175,7 +291,9 @@ textarea::placeholder {
 
 /* <!-- FOOTER --> */
 #footer {
+  background-color: var(--darkDarkBlue);
+  color: #aaa;
   color: var(--text);
-  padding-top: 2em;
+  padding: 2em 0;
   text-align: center;
 }

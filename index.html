@@ -8,8 +8,42 @@
     <link rel="stylesheet" href="./css/library.css">
     <link rel="stylesheet" href="./css/master.css">
     <link rel="stylesheet" href="./css/animation.css">
+
+    <!-- EMAIL API -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("user_Yhneoe75xmqsjM7zpUprB");
+       })();
+    </script>
+
   </head>
   <body ng-app='app' ng-controller='ctrl' ng-cloak>
+
+    <!-- LOG IN SCREEN -->
+    <div id="logIn" class="flexRow">
+      <p>LETS EDIT YOUR WEBSITE</p>
+      <div id="logInBox" class="flexRow">
+        <div class="flexCol">
+          <input class="logInInput" type="text" name="" value="" placeholder="user name">
+          <input class="logInInput" type="text" name="" value="" placeholder="password">
+        </div>
+        <div id="logInBtn" class="flexRow pointer" ng-click='logIn()'>
+          <p>LOG IN</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFIRMATION BOX -->
+    <div id="confirmationBoxContainer" class="flexRow">
+      <div id="confirmationBox" class="flexCol">
+        <p>ARE YOU SURE? ALL CHANGES ARE FINAL...</p>
+        <div id="confirmationBoxAnswerBox" class="flexRow">
+          <p class="pointer" ng-click='confirmation("yes")'>YES</p>
+          <p class="pointer" ng-click='confirmation("no")'>NO</p>
+        </div>
+      </div>
+    </div>
 
     <!-- CONTAINER -->
     <div id="container" class="">
@@ -17,24 +51,21 @@
       <!-- TOP BAR -->
       <div id="topBar" class="fullWidth flexRow ">
         <!-- USER BOX -->
-        <div id="userBox" class="fullHeight flexCol">
-          <!-- <p>USER:</p>
+        <div id="userBox" class="fullHeight flexCol" ng-click='sendEmail()'>
+          <p>USER:</p>
           <span>ISAIAH HARRISON</span>
           <p>WEBSITE:</p>
-          <span>http://letsbuildyourwebsite.com/</span> -->
+          <span>http://letsbuildyourwebsite.com/</span>
         </div>
         <!-- NAV BOX -->
-        <div data={{$index}} class="navBox flexCol" ng-click='selectServiceOption($index)' ng-repeat='nav in navOptions track by $index'>
+        <div data={{$index}} class="navBox flexCol pointer" ng-click='selectServiceOption($index)' ng-repeat='nav in navOptions track by $index'>
           <i class={{nav.icon}}></i>
           <p>{{nav.name}}</p>
         </div>
       </div>
 
       <!-- HELP TEXT -->
-      <div id="helpText" class="fullWidth flexRow" ng-click='get()'>
-        <div id="backBtn" class="fullHeight flexRow hideBackBtn" ng-click='goBack()'>
-          <p><</p>
-        </div>
+      <div id="helpText" class="fullWidth flexRow helpText" ng-click='get()'>
         <p>{{helpText}}</p>
       </div>
 
@@ -42,25 +73,25 @@
       <div id="dashboardBody" class="fullWidth flexRow">
 
         <!-- DASHBOARD LEFT -->
-        <div id="dashboardLeft" class="dashBoardBody">
-          <div class="optionBox fullWidth flexRow" ng-click='selectPageToEdit($index)' ng-repeat='option in leftDashboardOptions track by $index'>
-            <p>{{option | shorten}}</p>
+        <div id="dashboardLeft" class="dashBoardBody fullHeight">
+          <div class="optionBox fullSize flexRow pointer" ng-click='selectPageToEdit($index)' ng-repeat='option in leftDashboardOptions track by $index'>
+            <p>{{option | toReadableString | uppercase}}</p>
           </div>
         </div>
 
         <!-- DASHBOARD MIDDLE -->
-        <div id="dashboardMiddle" class="dashBoardBody">
-          <div class="optionBox fullWidth flexRow" ng-repeat='option in middleDashboardOptions track by $index'>
-            <p>{{option | shorten}}</p>
+        <div id="dashboardMiddle" class="dashBoardBody fullHeight">
+          <div data={{$index}} id="editText" class="pointer" ng-click='selectContent($index)' ng-repeat='option in middleDashboardOptions track by $index'>
+            <p>{{option | toReadableString}}</p>
           </div>
         </div>
 
         <!-- DASHBOARD RIGHT -->
         <div id="dashboardRight" class="dashBoardBody">
-          <div id="updateBtn" class="">
-            <p>UPDATE</p>
+          <div id="updateBtn" class="pointer" ng-if='toggleInputBox' ng-click='updateContent()'>
+            <p class="">{{submit}}</p>
           </div>
-          <textarea name="name" class="h90 fullWidth" placeholder="start writting here"></textarea>
+          <textarea id="editTextInput" ng-if='toggleInputBox' name="name" class="h90 fullWidth" placeholder="Start typing here..."></textarea>
         </div>
 
       </div>

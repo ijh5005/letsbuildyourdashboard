@@ -1,8 +1,15 @@
 #sendBtn,
 #editPageTextLeftLeft > * > p > i,
 #updateBtn,
-#backBtn {
+#backBtn,
+#confirmationBoxAnswerBox > p,
+.optionBox > p,
+#editText {
   transition: all 0.5s;
+}
+
+.helpText p {
+  transition: all 1s;
 }
 
 .navBox:hover {
@@ -23,15 +30,34 @@
   transform: scale(1.6) rotateZ(20deg);
 }
 
-.optionBox:hover {
-  background-color: transparent;
+.optionBox:hover > p {
+  color: var(--highlight);
+  left: 2em;
 }
 
 #updateBtn:hover {
   width: 100%;
-  opacity: 1;
 }
 
 #backBtn:hover {
   opacity: 1;
+}
+
+#editText:hover {
+  color: var(--highlight);
+  left: -2em;
+}
+
+#confirmationBoxAnswerBox > p:hover {
+  color: #fff;
+  transform: scale(2);
+}
+
+.helpText p.flash {
+  color: #fff;
+  transition: all 0s;
+}
+
+#logInBtn:hover p {
+  color: var(--highlight);
 }
